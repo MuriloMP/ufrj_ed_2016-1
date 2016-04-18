@@ -1,0 +1,15 @@
+|the 245 | 
+|is 93 | 
+|of 83 | 
+|a 79 | 
+|to 70 | 
+|in 63 | 
+|and 59 | 
+|NASA 55 | 
+|Earth 54 | 
+|on 47 | 
+|are 45 | 
+|Mars 44 | 
+|Jupiter 34 | 
+|that 33 | 
+|black 32 | 
