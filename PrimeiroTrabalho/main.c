@@ -27,14 +27,27 @@ typedef struct Word {
 
 int main(int argc, char const *argv[]) {
 
-	Word wordList[5000];
-	char line[50];
+	Word wordList[6000];
+	char line[100];
 	int i = 0;
+	int j = 0;
+	int k = 0;
 
 	while( (scanf("%[^\n]%*c", &line) == 1) ) {
-		strcpy(wordList[i].word, line);
-		//printf("palavra: %s\n", wordList[i].word);
-		i += 1;
+	    strcpy(wordList[i].word, line);
+	    wordList[i].count = 1;
+	    i += 1;
 	}
+	
+	for( j = 0; j < i; j++ ){
+	  for( k = 0; k < i; k++ ){
+	    if( strcmp(wordList[j].word,wordList[k].word) > 1 ){
+		wordList[j].count ++;
+	    }
+	  }
+	  printf("palavra: %s %d\n", wordList[j].word, wordList[j].count);
+	}
+	
+
 	return 0;
 }
