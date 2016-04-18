@@ -20,38 +20,21 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Word
-{
+typedef struct Word {
 	char word[50];
 	int count;
 } Word;
 
-
-/*int main(int argc, char const *argv[])
-{
-	char line[50];
-
-	while(scanf("%[^\n]%*c", &line) == 1) {          
-		printf("%s\n", line);
-	}
-
-	return 0;
-}
-*/
 int main(int argc, char const *argv[]) {
 
 	Word wordList[5000];
 	char line[50];
-	int j;
 	int i = 0;
 
 	while( (scanf("%[^\n]%*c", &line) == 1) ) {
 		strcpy(wordList[i].word, line);
-		printf("palavra: %s\n", wordList[i].word);
+		//printf("palavra: %s\n", wordList[i].word);
 		i += 1;
 	}
-
-
-	
 	return 0;
 }
