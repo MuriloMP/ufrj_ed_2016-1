@@ -16,6 +16,7 @@ int main(int argc, char const *argv[]) {
     int key, value;
     Node List[TAM];
     int vetorOc[TAM];
+    int vetorOrdem[TAM];
     Node *aux;
     for (i = 0; i < TAM; i++) {        
         List[i].next = NULL;
@@ -23,6 +24,7 @@ int main(int argc, char const *argv[]) {
     }
     while(scanf( "%d %d", &key, &value ) != EOF) {
         if( key == 0 && value == 0 ) break;
+        vetorOrdem[count]=value;
         Node *nozinho = (Node*)malloc(sizeof(Node));
         nozinho->value = value;
         nozinho->next=NULL;
@@ -33,38 +35,35 @@ int main(int argc, char const *argv[]) {
 		    	aux = aux->next;
 		    }
 		    aux->next=nozinho;
-		    vetorOc[value]++;
 		}
+        vetorOc[value]++;
 		count++;
-	    printf("%d\n", List[key].next  ->value);
     }
     int vetorResp[TAM];
-    int j = 0;
-    for(i=1;i<count;i++){
-    	if(vetorOc[i]==0){
-    		vetorResp[j]=i;
-    		if(List[i].next!=NULL){
-				aux = List[i].next;
-                printf("\n%d\n", aux->value);
-				while(aux->next!=NULL){
-                    printf("\n%d\n", aux->next->value);
-					if(vetorOc[aux->value]>0){
-						vetorResp[j]=aux->value;
-                        j++;
-						vetorOc[aux->value]--;
-					}
-					aux = aux->next;
-				}
-				j++;
-				vetorResp[j]=aux->value;
-				vetorOc[aux->value]--;
-				if(vetorOc[aux->value]==0) vetorOc[aux->value]--;
-			}
-    	}
+    int j,k;
+    int contador=0;
+    j=1;
+    while(j<count){
+       for(i=1;i<count;i++){
+            if(j==1){
+                if(vetorOc[i]==0){
+                    vetorResp[j]=i;
+                    j++;
+                    break;
+                }
+            }
+            else{
+            	if(vetorOc[vetorOrdem[i]]==contador){
+                    vetorResp[j]=vetorOrdem[i];
+                    vetorOc[vetorOrdem[i]]--;
+                    j++;
+            	}
+            }
+        }
+        contador++;
     }
-    for (i = 0; i < count; i++){
-    	printf("%d ", vetorResp[i]);
-    }
+    for(i=1;i<j;i++)    
+        printf("%d ",vetorResp[i]);
    	printf("\n");
     return 0;
 }
